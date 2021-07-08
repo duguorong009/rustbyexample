@@ -1,0 +1,15 @@
+#!/bin/bash
+
+echo "rustc $1 --out-dir ./bin"
+rustc $1 --out-dir ./bin
+
+IFS='/'
+read -a binfilepath <<< "$1"
+filename="${binfilepath[2]}"
+IFS='.'
+read -a filenamearr <<< "$filename"
+binfile="${filenamearr[0]}"
+
+echo "..."
+./bin/${binfile}
+
